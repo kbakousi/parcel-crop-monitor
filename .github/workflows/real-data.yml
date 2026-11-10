@@ -12,6 +12,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Allow access to private eo-landscape-indicators
+        shell: bash
+        env:
+          EO_TOKEN: ${{ secrets.EO_LANDSCAPE_TOKEN }}
+        run: git config --global url."https://x-access-token:${EO_TOKEN}@github.com/kbakousi/eo-landscape-indicators".insteadOf "https://github.com/kbakousi/eo-landscape-indicators"
       - run: pip install -e ".[geo,stac]"
       - run: python examples/demo_brp_sentinel2.py
       - uses: actions/upload-artifact@v4
