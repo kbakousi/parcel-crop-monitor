@@ -9,6 +9,7 @@ version: 0.1.0
 date-released: 2026-11-10
 license: Apache-2.0
 repository-code: "https://github.com/kbakousi/parcel-crop-monitor"
+doi: 10.5281/zenodo.24118763
 keywords: [sentinel-2, crop classification, CAP monitoring, parcel, time series]
 abstract: >-
   Parcel-level crop and land-use checks with Sentinel-2 time series:

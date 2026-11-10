@@ -1,6 +1,6 @@
 # parcel-crop-monitor
 
-[![Tests](https://github.com/kbakousi/parcel-crop-monitor/actions/workflows/ci.yml/badge.svg)](https://github.com/kbakousi/parcel-crop-monitor/actions/workflows/ci.yml)
+[![Tests](https://github.com/kbakousi/parcel-crop-monitor/actions/workflows/ci.yml/badge.svg)](https://github.com/kbakousi/parcel-crop-monitor/actions/workflows/ci.yml) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24118763.svg)](https://doi.org/10.5281/zenodo.24118763)
 
 Parcel-level crop and land-use checks with Sentinel-2 time series. Given agricultural parcels with a declared crop (e.g. an IACS / LPIS declaration), the package:
 
@@ -173,3 +173,5 @@ The tests run offline. They cover:
 ## Licence and citation
 
 Apache-2.0 (see `LICENSE` and `NOTICE`). Cite via `CITATION.cff`.
+
+Archived on Zenodo: [doi:10.5281/zenodo.24118763](https://doi.org/10.5281/zenodo.24118763) (all versions; each release also has its own DOI on that page).
