@@ -17,11 +17,6 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - run: python -m pip install --upgrade pip
-      - name: Allow access to private eo-landscape-indicators
-        shell: bash
-        env:
-          EO_TOKEN: ${{ secrets.EO_LANDSCAPE_TOKEN }}
-        run: git config --global url."https://x-access-token:${EO_TOKEN}@github.com/kbakousi/eo-landscape-indicators".insteadOf "https://github.com/kbakousi/eo-landscape-indicators"
       - run: pip install -e ".[dev,geo]"
       - run: ruff check .
       - run: pytest
