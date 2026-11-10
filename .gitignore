@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+# never commit parcel data, outputs or private configurations
+data/
+outputs/
+private_configs/
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+*.gpkg
+*.tif
+.env
+.coverage
+.coverage.*
+htmlcov/

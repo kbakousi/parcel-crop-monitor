@@ -1,0 +1,25 @@
+parcels: {id_column: parcel_id, crop_column: declared_group}
+crop_groups:
+  codes:
+    winter_cereal: [winter_cereal]
+    maize: [maize]
+    grassland: [grassland]
+    fallow_bare: [fallow_bare]
+preprocessing: {inward_buffer_m: 0, min_pixels: 4}
+timeseries:
+  indices: [ndvi]
+  primary_index: ndvi
+  season_start: "2025-03-01"
+  season_end: "2025-10-31"
+  min_valid_fraction: 0.8
+  min_valid_dates: 8
+  step_days: 10
+  max_gap_days: 40
+  smoothing: {window: 5, polyorder: 2}
+states: {bare_max: 0.25, vegetated_min: 0.5, bare_season_fraction: 0.8}
+events: {min_drop: 0.25, max_drop_days: 30, min_peak: 0.5}
+classifier: {n_splits: 4, block_size_m: 300, random_state: 0, n_estimators: 200}
+verdict:
+  p_high: 0.7
+  p_low: 0.3
+  downgrade_rules: {maize: [bare_all_season, no_vegetation_peak]}

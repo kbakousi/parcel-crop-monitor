@@ -1,0 +1,54 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "parcel-crop-monitor"
+type: software
+authors:
+  - family-names: Bakousi
+    given-names: Aikaterini
+version: 0.1.0
+date-released: 2026-11-13
+license: Apache-2.0
+repository-code: "https://github.com/kbakousi/parcel-crop-monitor"
+keywords: [sentinel-2, crop classification, CAP monitoring, parcel, time series]
+abstract: >-
+  Parcel-level crop and land-use checks with Sentinel-2 time series:
+  clear-pixel parcel statistics, gap-aware regular time series, rule-based
+  land-use states and harvest/mowing events, out-of-fold Random Forest crop
+  verification with spatial-block cross-validation, and traffic-light verdicts.
+references:
+  - type: article
+    authors: [{family-names: Breiman, given-names: Leo}]
+    title: "Random Forests"
+    journal: Machine Learning
+    year: 2001
+    doi: 10.1023/A:1010933404324
+  - type: article
+    authors: [{family-names: Inglada, given-names: Jordi}]
+    title: "Assessment of an operational system for crop type map production using high temporal and spatial resolution satellite optical imagery"
+    journal: Remote Sensing
+    year: 2015
+    doi: 10.3390/rs70912356
+  - type: article
+    authors: [{family-names: Defourny, given-names: Pierre}]
+    title: "Near real-time agriculture monitoring at national scale at parcel resolution: performance assessment of the Sen2-Agri automated system in various cropping systems around the world"
+    journal: Remote Sensing of Environment
+    year: 2019
+    doi: 10.1016/j.rse.2018.11.007
+  - type: article
+    authors: [{family-names: Sitokonstantinou, given-names: Vasileios}]
+    title: "Scalable parcel-based crop identification scheme using Sentinel-2 data time-series for the monitoring of the Common Agricultural Policy"
+    journal: Remote Sensing
+    year: 2018
+    doi: 10.3390/rs10060911
+  - type: article
+    authors: [{family-names: Pelletier, given-names: Charlotte}]
+    title: "Effect of training class label noise on classification performances for land cover mapping with satellite image time series"
+    journal: Remote Sensing
+    year: 2017
+    doi: 10.3390/rs9020173
+  - type: article
+    authors: [{family-names: Roberts, given-names: David R.}]
+    title: "Cross-validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure"
+    journal: Ecography
+    year: 2017
+    doi: 10.1111/ecog.02881

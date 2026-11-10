@@ -1,0 +1,20 @@
+name: Real-data example
+# Started by hand (Actions tab -> "Real-data example" -> Run workflow). Dutch BRP parcels (PDOK, public domain)
+# + Sentinel-2 L2A (Planetary Computer). Needs network; not part of CI.
+on:
+  workflow_dispatch:
+jobs:
+  brp-sentinel2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[geo,stac]"
+      - run: python examples/demo_brp_sentinel2.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: brp-sentinel2-outputs
+          path: outputs/

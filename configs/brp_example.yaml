@@ -1,0 +1,64 @@
+# Example configuration for the Dutch BRP Gewaspercelen (public domain, PDOK).
+# Every value here is a documented choice for this example, not a universal default.
+# Re-check the thresholds for your own area and year.
+
+parcels:
+  id_column: parcel_id
+  crop_column: gewas          # BRP crop name; the code is in 'gewascode'
+  crs: "EPSG:28992"           # Dutch RD New (metres)
+
+crop_groups:                  # case-insensitive regular expressions on 'gewas'; first match wins
+  patterns:
+    grassland: ["^Grasland"]
+    winter_cereals: ["^Tarwe, winter-", "^Gerst, winter-", "^Rogge", "^Triticale"]
+    spring_cereals: ["^Tarwe, zomer-", "^Gerst, zomer-", "^Haver"]
+    maize: ["^Mais"]
+    potatoes: ["^Aardappelen"]
+    sugar_beet: ["^Bieten, suiker"]
+    onions: ["^Uien"]
+    flower_bulbs: ["bloembollen"]
+    fallow: ["braak"]
+  other: null                 # unmatched crops are left out of training and get no verdict
+
+preprocessing:
+  inward_buffer_m: 10         # one Sentinel-2 10 m pixel (Sitokonstantinou et al. 2018)
+  min_pixels: 8               # parcels with fewer pure pixels are reported as too_small
+
+timeseries:
+  indices: [ndvi, ndmi, ndre]
+  primary_index: ndvi         # used for states and events
+  season_start: "2025-03-01"
+  season_end: "2025-10-31"
+  min_valid_fraction: 0.8     # share of a parcel's pixels that must be clear on a date
+  min_valid_pixels: 4
+  min_valid_dates: 8          # fewer retained dates -> low_valid_dates
+  step_days: 10
+  max_gap_days: 40            # do not interpolate across longer gaps
+  smoothing: {window: 5, polyorder: 2}
+
+states:                       # NDVI thresholds; calibrate on reference observations with states.youden_threshold
+  bare_max: 0.25
+  vegetated_min: 0.5
+  bare_season_fraction: 0.8
+
+events:
+  min_drop: 0.25              # NDVI fall counted as harvest/mowing
+  max_drop_days: 30
+  min_peak: 0.5
+
+classifier:
+  n_splits: 5
+  block_size_m: 5000          # spatial blocks for cross-validation (Roberts et al. 2017)
+  random_state: 42
+  n_estimators: 500
+
+verdict:
+  p_high: 0.7
+  p_low: 0.3
+  downgrade_rules:            # an 'agree' becomes 'inconclusive' if these rule reasons appear
+    maize: [bare_all_season, no_vegetation_peak]
+    winter_cereals: [bare_all_season, no_vegetation_peak]
+    spring_cereals: [bare_all_season, no_vegetation_peak]
+    potatoes: [bare_all_season, no_vegetation_peak]
+    sugar_beet: [bare_all_season, no_vegetation_peak]
+    grassland: [bare_all_season, no_vegetation_peak]
