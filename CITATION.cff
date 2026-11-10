@@ -5,6 +5,7 @@ type: software
 authors:
   - family-names: Bakousi
     given-names: Aikaterini
+    orcid: "https://orcid.org/0000-0002-2445-1602"
 version: 0.1.0
 date-released: 2026-11-10
 license: Apache-2.0
